@@ -21,12 +21,10 @@ export default {
   },
   setup(props) {
     let [count, setCount] = useCount(props.value);
-
     return {
       count,
       setCount,
     };
   },
-  data() {},
 };
 </script>
