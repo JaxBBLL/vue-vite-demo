@@ -1,1 +1,1 @@
-# vite & vue@3
+# vue3.2 + vite + setup

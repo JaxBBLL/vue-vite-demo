@@ -1,23 +1,8 @@
 <template>
-  <Count :value="2" />
+  <Count :value="0" />
 </template>
 
-<script>
-import Count from './components/Count.vue';
-
-export default {
-  name: 'App',
-  components: {
-    Count,
-  },
-};
+<script setup>
+import Count from "./components/Count.vue";
 </script>
-<style>
-body {
-  margin: 0;
-}
-#app {
-  display: flex;
-  justify-content: center;
-}
-</style>
+<style></style>
