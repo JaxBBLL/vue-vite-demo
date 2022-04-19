@@ -4,9 +4,9 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <div class="container mx-auto">
-    <nav>
+    <nav class="my-2">
       <RouterLink to="/">Home</RouterLink>
-      |
+      <span class="mx-2">|</span>
       <RouterLink to="/about">About</RouterLink>
     </nav>
     <RouterView />
