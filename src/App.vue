@@ -1,8 +1,16 @@
+<script setup lang="ts">
+import { RouterLink, RouterView } from 'vue-router'
+</script>
+
 <template>
-  <Count :value="0" />
+  <div class="container mx-auto">
+    <nav>
+      <RouterLink to="/">Home</RouterLink>
+      |
+      <RouterLink to="/about">About</RouterLink>
+    </nav>
+    <RouterView />
+  </div>
 </template>
 
-<script setup>
-import Count from "./components/Count.vue";
-</script>
 <style></style>
