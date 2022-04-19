@@ -1,5 +1,9 @@
 <script setup lang="ts"></script>
 
 <template>
-  <main></main>
+  <main>
+    <n-button type="primary">
+      Primary
+    </n-button>
+  </main>
 </template>
