@@ -2,14 +2,21 @@ import { defineComponent, ref } from 'vue'
 import { NButton } from 'naive-ui'
 
 export default defineComponent({
-  render() {
-    const msg = ref('abc')
+  setup() {
+    const msg = ref('abcdefg')
     const handleClick = () => {
-      msg.value = '123'
+      msg.value = msg.value.split('').reverse().join('')
+      console.log(msg.value)
     }
+    return {
+      msg,
+      handleClick,
+    }
+  },
+  render(ctx: any) {
     return (
-      <NButton type="primary" onClick={handleClick}>
-        click me {msg.value}
+      <NButton type="primary" onClick={ctx.handleClick}>
+        {ctx.msg}
       </NButton>
     )
   },

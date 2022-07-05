@@ -1,7 +1,8 @@
+import type { App } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
-const router = createRouter({
+export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   linkExactActiveClass: 'text-purple-600',
   routes: [
@@ -18,4 +19,7 @@ const router = createRouter({
   ],
 })
 
-export default router
+export async function setupRouter(app: App) {
+  app.use(router)
+  await router.isReady()
+}
