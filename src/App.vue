@@ -1,16 +1,15 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-</script>
-
 <template>
-  <div class="container mx-auto">
-    <nav class="my-2">
-      <RouterLink to="/">Home</RouterLink>
-      <span class="mx-2">|</span>
-      <RouterLink to="/about">About</RouterLink>
-    </nav>
-    <RouterView />
-  </div>
+  <n-notification-provider>
+    <n-message-provider>
+      <router-view />
+    </n-message-provider>
+  </n-notification-provider>
 </template>
 
-<style></style>
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'App',
+})
+</script>
