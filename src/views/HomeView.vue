@@ -1,13 +1,20 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useStore } from '@/store/index'
+
+const store = useStore()
+const onIncrement = () => {
+  store.increment()
+}
+</script>
 
 <template>
   <main>
-    <n-button type="primary">
-      Primary
+    <n-button type="primary" @click="onIncrement" v-preventReClick>
+      increment
       <SvgIcon class="ml-2" name="arrow-right-circle-fill"></SvgIcon>
     </n-button>
     <n-space>
-      <SvgIcon name="alarm-fill" width="24" height="24"></SvgIcon>
+      <span>{{ store.count }}</span>
     </n-space>
   </main>
 </template>
