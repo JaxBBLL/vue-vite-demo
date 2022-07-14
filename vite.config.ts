@@ -1,8 +1,6 @@
 import path from 'path'
-
-import { fileURLToPath, URL } from 'url'
-
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
+import AutoImport from 'unplugin-auto-import/vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import ViteComponents from 'unplugin-vue-components/vite'
@@ -11,11 +9,28 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }: { mode: string }) => {
-  console.log(mode)
+  const env = loadEnv(mode, process.cwd())
+  const isDev = mode === 'development'
+  console.log(isDev, env)
 
   const config = {
+    base: env.VITE_BASE,
+    server: {
+      open: true,
+      port: 9000,
+      proxy: {
+        '/proxy': {
+          target: 'http://192.168.16.109:8080',
+          changeOrigin: true,
+          rewrite: (path: string) => path.replace(/\/proxy/, ''),
+        },
+      },
+    },
     plugins: [
       vue(),
+      AutoImport({
+        imports: ['vue', 'vue-router', 'pinia'],
+      }),
       ViteComponents({
         resolvers: [NaiveUiResolver()],
       }),
@@ -29,23 +44,11 @@ export default defineConfig(({ mode }: { mode: string }) => {
     ],
     resolve: {
       alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url)),
+        // import { fileURLToPath, URL } from 'url'
+        // fileURLToPath(new URL('./src', import.meta.url)),
+        '@': path.resolve(process.cwd(), './src'),
       },
     },
   }
-  if (mode === 'staging') {
-    return Object.assign(
-      {
-        base: '/test/',
-      },
-      config,
-    )
-  } else {
-    return Object.assign(
-      {
-        base: '/',
-      },
-      config,
-    )
-  }
+  return config
 })
