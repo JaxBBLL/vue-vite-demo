@@ -1,10 +1,6 @@
 import Axios, { type AxiosInstance } from 'axios'
 import querystring from 'querystring'
 import { adornUrl, objReduce } from '@/utils'
-import { useMessage } from 'naive-ui'
-
-const message = useMessage()
-
 interface Config {
   url: string
   method: string
@@ -87,7 +83,7 @@ function createAxios(contentType = 'json') {
             resolve(data)
           } else {
             if (![304011, 304012, 302001].includes(data.code)) {
-              message.error('data.message')
+              console.error(data.message)
             }
             reject(data)
           }
