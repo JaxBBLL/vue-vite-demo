@@ -44,7 +44,11 @@ module.exports = {
         pink: colors.pink,
         rose: colors.rose,
         // add custom colors
-        primary: '#3A8CEF',
+        primary: '#409EFF',
+        success: '#67C23A',
+        warning: '#E6A23C',
+        danger: '#F56C6C',
+        info: '#909399',
       }
     },
     columns: {

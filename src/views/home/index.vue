@@ -13,7 +13,9 @@ const msg = ref('Hello World')
   <el-button type="primary" @click="onIncrement" v-preventReClick>
     <SvgIcon width="16" height="16" name="plus-circle"></SvgIcon>
   </el-button>
-  <div class="border border-solid border-primary">{{ store.count }}</div>
+  <div class="w-200 mt-10 p-5 border border-solid border-primary rounded">
+    {{ store.count }}
+  </div>
 </template>
 <style scoped>
 @import './index.css';
