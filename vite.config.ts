@@ -44,16 +44,22 @@ export default defineConfig(({ mode }: { mode: string }) => {
                 .split('node_modules/')[1]
                 .split('/')[0]
                 .toString()
-
-              if (
-                ['vue', 'vue-router', 'axios', 'pinia', 'vue-demi'].includes(
-                  moduleId,
-                )
-              ) {
-                return 'lib'
-              } else {
-                return 'vendor'
+              const configMap = {
+                lib: [
+                  'vue',
+                  '@vue',
+                  'vue-router',
+                  'axios',
+                  'pinia',
+                  'vue-demi',
+                ],
               }
+              for (let key in configMap) {
+                if (configMap[key].includes(moduleId)) {
+                  return key
+                }
+              }
+              return 'vendor'
             }
           },
           entryFileNames: 'js/[name].[hash].js', // 用于从入口点创建的块的打包输出格式[name]表示文件名,[hash]表示该文件内容hash值
