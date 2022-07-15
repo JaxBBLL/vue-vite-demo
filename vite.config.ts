@@ -37,9 +37,28 @@ export default defineConfig(({ mode }: { mode: string }) => {
       },
       rollupOptions: {
         output: {
-          chunkFileNames: 'js/[name]-[hash].js',
-          entryFileNames: 'js/[name]-[hash].js',
-          assetFileNames: '[ext]/[name]-[hash].[ext]',
+          manualChunks: (id: string) => {
+            if (id.includes('node_modules')) {
+              const moduleId = id
+                .toString()
+                .split('node_modules/')[1]
+                .split('/')[0]
+                .toString()
+
+              if (
+                ['vue', 'vue-router', 'axios', 'pinia', 'vue-demi'].includes(
+                  moduleId,
+                )
+              ) {
+                return 'lib'
+              } else {
+                return 'vendor'
+              }
+            }
+          },
+          entryFileNames: 'js/[name].[hash].js', // 用于从入口点创建的块的打包输出格式[name]表示文件名,[hash]表示该文件内容hash值
+          chunkFileNames: 'js/[name].[hash].js', // 用于命名代码拆分时创建的共享块的输出命名
+          assetFileNames: '[ext]/[name].[hash].[ext]', // 用于输出静态资源的命名，[ext]表示文件扩展名
         },
       },
     },
