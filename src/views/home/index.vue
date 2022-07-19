@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { useStore } from "@/store/index";
+import { testApi } from "@/service/api/index";
 
 const store = useStore();
 const onIncrement = () => {
   store.increment();
+  testApi().then((res) => {
+    console.log(res.msg);
+  });
 };
 const msg = ref("Hello World");
 </script>
