@@ -4,7 +4,7 @@ import { setupGlobalComponents } from './globalComponents'
 import { setupDirectives } from './directives'
 
 export function setupPlugins(app: App) {
-  setupAssets()
+  setupAssets(app)
   setupGlobalComponents(app)
   setupDirectives(app)
 }

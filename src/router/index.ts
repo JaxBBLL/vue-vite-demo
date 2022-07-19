@@ -1,10 +1,14 @@
 import type { App } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router'
+import {
+  createRouter,
+  createWebHistory,
+  createWebHashHistory,
+} from 'vue-router'
 import Layout from '@/layouts/index.vue'
 import notfound from '@/views/notfound/index.vue'
 
 export const router = createRouter({
-  history: createWebHistory(import.meta.env.VITE_BASE),
+  history: createWebHashHistory(import.meta.env.VITE_BASE),
   linkExactActiveClass: 'active',
   routes: [
     {

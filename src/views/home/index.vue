@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { useStore } from '@/store/index'
+import { useStore } from "@/store/index";
 
-const store = useStore()
+const store = useStore();
 const onIncrement = () => {
-  store.increment()
-}
-const msg = ref('Hello World')
+  store.increment();
+};
+const msg = ref("Hello World");
 </script>
 
 <template>
@@ -18,5 +18,5 @@ const msg = ref('Hello World')
   </div>
 </template>
 <style scoped>
-@import './index.css';
+@import "./index.css";
 </style>
