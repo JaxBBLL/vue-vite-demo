@@ -1,13 +1,12 @@
 export function uuid() {
-  var uuidChars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split(
-    ''
-  )
-  var r
-  var uuid = []
+  const uuidChars =
+    '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('')
+  let r
+  const uuid = []
   uuid[8] = uuid[13] = uuid[18] = uuid[23] = '-'
   uuid[14] = '4'
 
-  for (var i = 0; i < 36; i++) {
+  for (let i = 0; i < 36; i++) {
     if (!uuid[i]) {
       r = 0 | (Math.random() * 16)
       uuid[i] = uuidChars[i == 19 ? (r & 0x3) | 0x8 : r]
@@ -40,11 +39,11 @@ export function deepCopy(data: any): any {
 }
 
 export function objReduce(data: any) {
-  var o = deepCopy(data)
+  const o = deepCopy(data)
   if (typeOf(o) === 'string') {
     return o
   }
-  for (var k in o) {
+  for (const k in o) {
     if (typeOf(o[k]) === 'string') {
       o[k] = o[k].trim()
       if (o[k] === '') {

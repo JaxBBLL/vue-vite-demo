@@ -3,9 +3,7 @@
     <header class="py-4 bg-purple-100">
       <router-link to="/home">home</router-link>
       <span class="mx-5">|</span>
-      <router-link class="no-underline" to="/about">
-        about
-      </router-link>
+      <router-link class="no-underline" to="/about"> about </router-link>
     </header>
     <div class="g-main">
       <router-view />

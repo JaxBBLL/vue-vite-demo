@@ -13,7 +13,11 @@ module.exports = {
     'vue/setup-compiler-macros': true,
   },
   rules: {
-    semi: false,
-    quotes: false,
-  }
+    semi: [0],
+    quotes: [0],
+    'no-undef': [0],
+    'vue/multi-word-component-names': [0],
+    '@typescript-eslint/no-explicit-any': [0],
+    '@typescript-eslint/no-non-null-assertion': [0],
+  },
 }

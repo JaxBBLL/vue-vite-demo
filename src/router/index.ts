@@ -1,9 +1,5 @@
 import type { App } from 'vue'
-import {
-  createRouter,
-  createWebHistory,
-  createWebHashHistory,
-} from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import Layout from '@/layouts/index.vue'
 import notfound from '@/views/notfound/index.vue'
 

@@ -1,7 +1,10 @@
-import { httpJson } from "../request/index";
+import { httpJson } from '../request/index'
+import type { HttpResponse } from '../request/index'
 
 export const testApi = (
-  params?: Object
-): Promise<{
-  msg: string;
-}> => httpJson("get", "/test/aa", params);
+  params?: object
+): Promise<
+  HttpResponse<{
+    msg: string
+  }>
+> => httpJson('get', '/test/aa', params)
