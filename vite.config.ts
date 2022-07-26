@@ -94,6 +94,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
             eslint({
               exclude: ['node_modules/**'],
               cache: false,
+              failOnWarning: true,
             }),
           ]
         : [
