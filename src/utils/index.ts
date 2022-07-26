@@ -1,6 +1,6 @@
 export function uuid() {
   var uuidChars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split(
-    '',
+    ''
   )
   var r
   var uuid = []
@@ -20,24 +20,21 @@ export function typeOf(obj: any) {
   return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase()
 }
 
-export function deepCopy(data: any) {
+export function deepCopy(data: any): any {
   const t = typeOf(data)
   let o
   if (t === 'array') {
     o = []
-  } else if (t === 'object') {
-    o = {}
-  } else {
-    return data
-  }
-  if (t === 'array') {
     for (let i = 0; i < data.length; i++) {
       o.push(deepCopy(data[i]))
     }
   } else if (t === 'object') {
+    o = {} as { [key: string]: any }
     for (const i in data) {
       o[i] = deepCopy(data[i])
     }
+  } else {
+    return data
   }
   return o
 }
