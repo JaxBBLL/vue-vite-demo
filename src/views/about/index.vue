@@ -1,5 +1,8 @@
-<script setup lang="ts"></script>
-
 <template>
-  <button type="button">about</button>
+  <WangeEditor />
 </template>
+<script setup lang="ts">
+import WangeEditor from '@/components/WangEditor/index.vue'
+
+const content = ref('<p></p>')
+</script>

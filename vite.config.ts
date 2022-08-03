@@ -110,6 +110,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         '~': path.resolve(process.cwd(), './'),
         '@': path.resolve(process.cwd(), './src'),
       },
+      extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
     },
   }
   return config
