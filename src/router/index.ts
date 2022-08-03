@@ -16,12 +16,12 @@ export const router = createRouter({
         {
           path: '/home',
           name: 'home',
-          component: () => import('../views/home/index.vue'),
+          component: () => import('@/views/home/index.vue'),
         },
         {
           path: '/about',
           name: 'about',
-          component: () => import('../views/about/index.vue'),
+          component: () => import('@/views/about/index.vue'),
         },
       ],
     },

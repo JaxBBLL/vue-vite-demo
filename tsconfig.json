@@ -1,8 +1,16 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": ["env.d.ts", "auto-import.d.ts", "src/**/*"],
+  "include": [
+    "env.d.ts",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "auto-imports.d.ts"
+  ],
   "compilerOptions": {
     "baseUrl": ".",
+    "allowJs": true,
     "target": "esnext",
     "paths": {
       "@/*": ["./src/*"]

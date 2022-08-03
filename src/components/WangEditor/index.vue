@@ -22,7 +22,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script name="WangEditor">
 import '@wangeditor/editor/dist/css/style.css'
 import { computed, onBeforeUnmount, shallowRef } from 'vue'
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
