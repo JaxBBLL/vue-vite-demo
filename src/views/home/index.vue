@@ -6,7 +6,7 @@ const store = useStore()
 const onIncrement = () => {
   store.increment()
   testApi().then((res) => {
-    console.log(res.msg)
+    console.log(res)
   })
 }
 const msg = ref('Hello World')
