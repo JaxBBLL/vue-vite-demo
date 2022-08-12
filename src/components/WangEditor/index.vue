@@ -99,9 +99,7 @@ export default {
       emit('onChange', editor.getHtml())
     }
 
-    const handleDestroyed = (editor) => {
-      console.log('destroyed', editor)
-    }
+    const handleDestroyed = (editor) => {}
 
     const handleFocus = (editor) => {
       emit('onFocus', editor)
