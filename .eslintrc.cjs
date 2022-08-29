@@ -9,6 +9,9 @@ module.exports = {
     '@vue/eslint-config-typescript/recommended',
     '@vue/eslint-config-prettier',
   ],
+  parserOptions: {
+    ecmaVersion: 'latest',
+  },
   rules: {
     semi: [0],
     quotes: [0],
