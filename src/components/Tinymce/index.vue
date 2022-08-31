@@ -35,49 +35,6 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue']);
 
-const images_upload_handler = (blobInfo, progress) =>
-  new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.withCredentials = false;
-    xhr.open('POST', 'postAcceptor.php');
-
-    xhr.upload.onprogress = (e) => {
-      progress((e.loaded / e.total) * 100);
-    };
-
-    xhr.onload = () => {
-      if (xhr.status === 403) {
-        reject({ message: 'HTTP Error: ' + xhr.status, remove: true });
-        return;
-      }
-
-      if (xhr.status < 200 || xhr.status >= 300) {
-        reject('HTTP Error: ' + xhr.status);
-        return;
-      }
-
-      const json = JSON.parse(xhr.responseText);
-
-      if (!json || typeof json.location != 'string') {
-        reject('Invalid JSON: ' + xhr.responseText);
-        return;
-      }
-
-      resolve(json.location);
-    };
-
-    xhr.onerror = () => {
-      reject(
-        'Image upload failed due to a XHR Transport error. Code: ' + xhr.status
-      );
-    };
-
-    const formData = new FormData();
-    formData.append('file', blobInfo.blob(), blobInfo.filename());
-
-    xhr.send(formData);
-  });
-
 const defaultSetting = ref({
   language_url: 'tinymce/langs/zh-Hans.js',
   language: 'zh-Hans',
@@ -99,7 +56,11 @@ const defaultSetting = ref({
     '%Y-%m-%d',
     '%H:%M:%S',
   ],
-  images_upload_handler: images_upload_handler,
+  images_upload_handler: (blobInfo) =>
+    new Promise((resolve) => {
+      const img = `data:image/jpeg;base64,${blobInfo.base64()}`;
+      resolve(img);
+    }),
 });
 
 const myValue = ref(props.modelValue);
