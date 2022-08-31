@@ -11,16 +11,18 @@ const routes = [
       {
         path: '/home',
         name: 'home',
-        component: () => import('@/views/home/index.vue'),
-      },
-      {
-        path: '/about',
-        name: 'about',
-        component: () => import('@/views/about/index.vue'),
+        component: () => import('@/views/home.vue'),
       },
     ],
   },
-  { path: '/:pathMatch(.*)*', name: 'notfound', component: notfound },
+  {
+    path: '/login',
+    component: () => import('@/views/login.vue'),
+    name: 'Login',
+    title: '登录',
+    type: 2,
+  },
+  // { path: '/:pathMatch(.*)*', name: 'notfound', component: notfound },
 ];
 
 export default routes;

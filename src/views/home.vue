@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { useStore } from '@/store/index';
 import { fetchDataApi } from '@/service/api/index';
 import { awaitWrap } from '@/utils';
 
-const store = useStore();
 const list = ref<
   {
     name: string;
@@ -11,9 +9,6 @@ const list = ref<
   }[]
 >([]);
 
-const onIncrement = () => {
-  store.increment();
-};
 const msg = ref('Hello World');
 
 const getList = async () => {
@@ -26,12 +21,6 @@ const getList = async () => {
 
 <template>
   <div class="msg">{{ msg }}</div>
-  <el-button type="primary" @click="onIncrement" v-preventReClick>
-    <SvgIcon width="16" height="16" name="plus-circle"></SvgIcon>
-  </el-button>
-  <div class="p-5 mt-10 border border-gray-200 border-solid rounded w-200">
-    {{ store.count }}
-  </div>
   <el-button class="mt-10" type="primary" @click="getList">getList </el-button>
   <ul class="mt-10">
     <li v-for="(item, index) in list" :key="index">
@@ -40,5 +29,7 @@ const getList = async () => {
   </ul>
 </template>
 <style scoped>
-@import './index.css';
+.msg {
+  @apply text-danger text-20 font-bold uppercase;
+}
 </style>

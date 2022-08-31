@@ -1,15 +1,15 @@
 import { createApp } from 'vue';
-import { setupStore } from './store';
-import { setupPlugins } from './plugins';
-import { setupRouter } from './router';
+import store from './store';
+import plugins from './plugins';
+import router from './router';
 
 import App from './App.vue';
 
 async function setApp() {
   const app = createApp(App);
-  setupStore(app);
-  setupPlugins(app);
-  await setupRouter(app);
+  app.use(store);
+  app.use(plugins);
+  app.use(router);
   app.mount('#app');
 }
 
