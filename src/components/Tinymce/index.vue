@@ -1,22 +1,22 @@
 <script setup name="Editor">
-import tinymce from 'tinymce/tinymce'
-import TinymceEditor from '@tinymce/tinymce-vue'
-import 'tinymce/themes/silver/theme'
-import 'tinymce/icons/default/icons'
-import 'tinymce/models/dom'
-import 'tinymce/plugins/autolink'
-import 'tinymce/plugins/autoresize'
-import 'tinymce/plugins/fullscreen'
-import 'tinymce/plugins/image'
-import 'tinymce/plugins/insertdatetime'
-import 'tinymce/plugins/link'
-import 'tinymce/plugins/lists'
-import 'tinymce/plugins/media'
-import 'tinymce/plugins/preview'
-import 'tinymce/plugins/table'
-import 'tinymce/plugins/wordcount'
-import 'tinymce/plugins/code'
-import 'tinymce/plugins/searchreplace'
+import tinymce from 'tinymce/tinymce';
+import TinymceEditor from '@tinymce/tinymce-vue';
+import 'tinymce/themes/silver/theme';
+import 'tinymce/icons/default/icons';
+import 'tinymce/models/dom';
+import 'tinymce/plugins/autolink';
+import 'tinymce/plugins/autoresize';
+import 'tinymce/plugins/fullscreen';
+import 'tinymce/plugins/image';
+import 'tinymce/plugins/insertdatetime';
+import 'tinymce/plugins/link';
+import 'tinymce/plugins/lists';
+import 'tinymce/plugins/media';
+import 'tinymce/plugins/preview';
+import 'tinymce/plugins/table';
+import 'tinymce/plugins/wordcount';
+import 'tinymce/plugins/code';
+import 'tinymce/plugins/searchreplace';
 
 const props = defineProps({
   modelValue: {
@@ -31,52 +31,52 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-})
+});
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue']);
 
 const images_upload_handler = (blobInfo, progress) =>
   new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest()
-    xhr.withCredentials = false
-    xhr.open('POST', 'postAcceptor.php')
+    const xhr = new XMLHttpRequest();
+    xhr.withCredentials = false;
+    xhr.open('POST', 'postAcceptor.php');
 
     xhr.upload.onprogress = (e) => {
-      progress((e.loaded / e.total) * 100)
-    }
+      progress((e.loaded / e.total) * 100);
+    };
 
     xhr.onload = () => {
       if (xhr.status === 403) {
-        reject({ message: 'HTTP Error: ' + xhr.status, remove: true })
-        return
+        reject({ message: 'HTTP Error: ' + xhr.status, remove: true });
+        return;
       }
 
       if (xhr.status < 200 || xhr.status >= 300) {
-        reject('HTTP Error: ' + xhr.status)
-        return
+        reject('HTTP Error: ' + xhr.status);
+        return;
       }
 
-      const json = JSON.parse(xhr.responseText)
+      const json = JSON.parse(xhr.responseText);
 
       if (!json || typeof json.location != 'string') {
-        reject('Invalid JSON: ' + xhr.responseText)
-        return
+        reject('Invalid JSON: ' + xhr.responseText);
+        return;
       }
 
-      resolve(json.location)
-    }
+      resolve(json.location);
+    };
 
     xhr.onerror = () => {
       reject(
         'Image upload failed due to a XHR Transport error. Code: ' + xhr.status
-      )
-    }
+      );
+    };
 
-    const formData = new FormData()
-    formData.append('file', blobInfo.blob(), blobInfo.filename())
+    const formData = new FormData();
+    formData.append('file', blobInfo.blob(), blobInfo.filename());
 
-    xhr.send(formData)
-  })
+    xhr.send(formData);
+  });
 
 const defaultSetting = ref({
   language_url: 'tinymce/langs/zh-Hans.js',
@@ -100,31 +100,31 @@ const defaultSetting = ref({
     '%H:%M:%S',
   ],
   images_upload_handler: images_upload_handler,
-})
+});
 
-const myValue = ref(props.modelValue)
+const myValue = ref(props.modelValue);
 
 const completeSetting = computed(() => {
-  return Object.assign(defaultSetting.value, props.setting)
-})
+  return Object.assign(defaultSetting.value, props.setting);
+});
 
 watch(
   () => myValue.value,
   (newValue) => {
-    emit('update:modelValue', newValue)
+    emit('update:modelValue', newValue);
   }
-)
+);
 
 watch(
   () => props.modelValue,
   (newValue) => {
-    myValue.value = newValue
+    myValue.value = newValue;
   }
-)
+);
 
 onMounted(() => {
-  tinymce.init({})
-})
+  tinymce.init({});
+});
 </script>
 
 <template>

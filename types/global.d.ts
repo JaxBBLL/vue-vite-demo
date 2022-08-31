@@ -1,3 +1,3 @@
 declare interface AnyObject {
-  [key: string]: unknown
+  [key: string]: unknown;
 }

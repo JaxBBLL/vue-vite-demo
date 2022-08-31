@@ -1,5 +1,5 @@
 /* eslint-env node */
-require('@rushstack/eslint-patch/modern-module-resolution')
+require('@rushstack/eslint-patch/modern-module-resolution');
 
 module.exports = {
   root: true,
@@ -13,7 +13,7 @@ module.exports = {
     ecmaVersion: 'latest',
   },
   rules: {
-    semi: [0],
+    semi: [2],
     quotes: [0],
     'prefer-const': [0],
     'no-undef': [0],
@@ -27,4 +27,4 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': [0],
     '@typescript-eslint/no-non-null-assertion': [0],
   },
-}
+};

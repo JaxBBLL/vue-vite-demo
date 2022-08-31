@@ -49,7 +49,7 @@ module.exports = {
         warning: '#E6A23C',
         danger: '#F56C6C',
         info: '#909399',
-      }
+      };
     },
     columns: {
       auto: 'auto',
@@ -1055,4 +1055,4 @@ module.exports = {
     'disabled',
   ],
   plugins: [],
-}
+};

@@ -1,5 +1,5 @@
-import Layout from '@/layouts/index.vue'
-import notfound from '@/views/notfound/index.vue'
+import Layout from '@/layouts/index.vue';
+import notfound from '@/views/notfound/index.vue';
 
 const routes = [
   {
@@ -21,6 +21,6 @@ const routes = [
     ],
   },
   { path: '/:pathMatch(.*)*', name: 'notfound', component: notfound },
-]
+];
 
-export default routes
+export default routes;

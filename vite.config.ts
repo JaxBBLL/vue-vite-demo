@@ -1,19 +1,19 @@
-import path from 'path'
-import { defineConfig, loadEnv } from 'vite'
-import type { UserConfig, ConfigEnv } from 'vite'
-import AutoImport from 'unplugin-auto-import/vite'
-import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
-import legacy from '@vitejs/plugin-legacy'
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-import eslint from 'vite-plugin-eslint'
+import path from 'path';
+import { defineConfig, loadEnv } from 'vite';
+import type { UserConfig, ConfigEnv } from 'vite';
+import AutoImport from 'unplugin-auto-import/vite';
+import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
+import legacy from '@vitejs/plugin-legacy';
+import Components from 'unplugin-vue-components/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
+import eslint from 'vite-plugin-eslint';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
-  const env = loadEnv(mode, process.cwd())
-  const isDev = mode === 'development'
+  const env = loadEnv(mode, process.cwd());
+  const isDev = mode === 'development';
 
   const config: UserConfig = {
     base: env.VITE_BASE,
@@ -45,9 +45,9 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
                 .toString()
                 .split('node_modules/')[1]
                 .split('/')[0]
-                .toString()
+                .toString();
               const configMap: {
-                [propName: string]: string[]
+                [propName: string]: string[];
               } = {
                 lib: [
                   'vue',
@@ -57,13 +57,13 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
                   'pinia',
                   'vue-demi',
                 ],
-              }
+              };
               for (const key in configMap) {
                 if (configMap[key].includes(moduleId)) {
-                  return key
+                  return key;
                 }
               }
-              return 'vendor'
+              return 'vendor';
             }
           },
           entryFileNames: 'js/[name].[hash].js', // 用于从入口点创建的块的打包输出格式[name]表示文件名,[hash]表示该文件内容hash值
@@ -110,6 +110,6 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         '@': path.resolve(process.cwd(), './src'),
       },
     },
-  }
-  return config
-})
+  };
+  return config;
+});

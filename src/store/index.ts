@@ -1,21 +1,21 @@
-import type { App } from 'vue'
-import { createPinia, defineStore } from 'pinia'
+import type { App } from 'vue';
+import { createPinia, defineStore } from 'pinia';
 
-const store = createPinia()
+const store = createPinia();
 
 export const useStore = defineStore('store', {
   state: () => {
     return {
       count: 0,
-    }
+    };
   },
   actions: {
     increment() {
-      this.count++
+      this.count++;
     },
   },
-})
+});
 
 export function setupStore(app: App<Element>) {
-  app.use(store)
+  app.use(store);
 }

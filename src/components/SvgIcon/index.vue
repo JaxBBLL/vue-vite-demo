@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed } from 'vue';
 
 export default defineComponent({
   name: 'SvgIcon',
@@ -27,15 +27,15 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const symbolId = computed(() => `#${props.prefix}-${props.name}`)
+    const symbolId = computed(() => `#${props.prefix}-${props.name}`);
     const className = computed(() => [
       'icon-svg',
       `icon-svg__${props.name}`,
       props.class && /\S/.test(props.class) ? `${props.class}` : '',
-    ])
-    return { symbolId, className }
+    ]);
+    return { symbolId, className };
   },
-})
+});
 </script>
 <style scoped>
 .icon-svg {

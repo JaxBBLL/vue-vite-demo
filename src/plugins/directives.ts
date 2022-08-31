@@ -1,7 +1,7 @@
-import type { App } from 'vue'
+import type { App } from 'vue';
 
-import registerPreventReClick from '@/directives/preventReClick'
+import registerPreventReClick from '@/directives/preventReClick';
 
 export function setupDirectives(app: App) {
-  registerPreventReClick(app)
+  registerPreventReClick(app);
 }
