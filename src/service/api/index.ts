@@ -1,13 +1,14 @@
 import { httpJson } from '../request/index';
 import type { HttpResponse } from '../request/index';
+import { dynamicRoutes } from '../mock/index';
 
-export const testApi = (
-  params?: object
-): Promise<
-  HttpResponse<{
-    msg: string;
-  }>
-> => httpJson('get', '/test/aa', params);
+export const getRoutesApi = (): Promise<HttpResponse<any[]>> => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(dynamicRoutes);
+    }, 300);
+  });
+};
 
 export const fetchDataApi = (): Promise<
   HttpResponse<

@@ -1,7 +1,7 @@
 import Layout from '@/layouts/index.vue';
 import notfound from '@/views/notfound/index.vue';
 
-const routes = [
+const baseRoutes = [
   {
     path: '/',
     name: 'home',
@@ -22,7 +22,12 @@ const routes = [
     title: '登录',
     type: 2,
   },
-  // { path: '/:pathMatch(.*)*', name: 'notfound', component: notfound },
 ];
 
-export default routes;
+export const notfoundRoute = {
+  path: '/:pathMatch(.*)*',
+  name: 'notfound',
+  component: notfound,
+};
+
+export default baseRoutes;

@@ -1,12 +1,11 @@
-import type { App } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
-import routes from './routes/index';
+import baseRoutes from './baseRoutes';
 import createRouterGuards from './guards';
 
-export const router = createRouter({
+const router = createRouter({
   history: createWebHashHistory(import.meta.env.VITE_BASE),
   linkExactActiveClass: 'active',
-  routes,
+  routes: baseRoutes,
 });
 
 createRouterGuards(router);
