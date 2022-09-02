@@ -4,13 +4,17 @@ import notfound from '@/views/notfound/index.vue';
 const baseRoutes = [
   {
     path: '/',
-    name: 'home',
+    name: '',
+    title: '首页',
     component: Layout,
     redirect: '/home',
+    type: 0,
+    useFirstChild: 1,
     children: [
       {
         path: '/home',
         name: 'home',
+        title: '首页',
         component: () => import('@/views/home.vue'),
       },
     ],
@@ -20,7 +24,8 @@ const baseRoutes = [
     component: () => import('@/views/login.vue'),
     name: 'Login',
     title: '登录',
-    type: 2,
+    type: 1,
+    hidden: 1,
   },
 ];
 

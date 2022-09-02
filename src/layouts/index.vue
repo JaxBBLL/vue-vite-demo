@@ -1,13 +1,27 @@
 <template>
-  <div class="g-app">
-    <header class="py-4 bg-purple-100">
-      <router-link to="/home">home</router-link>
-      <span class="mx-5">|</span>
-      <router-link class="no-underline" to="/menu/editor"> editor </router-link>
-    </header>
-    <div class="g-main">
-      <router-view />
+  <div class="app-container">
+    <div class="app-sidebar">
+      <template v-for="item in menu" :key="item.id">
+        <sub-menu v-if="!item.hidden" :depth="depth + 1" :menu="item" />
+      </template>
     </div>
-    <footer class="py-4 bg-purple-100">footer</footer>
+    <div class="app-main">
+      <header class="app-header"></header>
+      <div class="app-body">
+        <router-view />
+      </div>
+    </div>
   </div>
 </template>
+<script lang="ts" setup>
+import usePermissionStore from '@/store/permission';
+import SubMenu from './SubMenu.vue';
+
+const menu = usePermissionStore().routes;
+
+let depth = ref(0);
+
+onMounted(() => {
+  console.log(toRaw(menu));
+});
+</script>

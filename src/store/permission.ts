@@ -3,6 +3,7 @@ import { defineStore } from 'pinia';
 import Layout from '@/layouts/index.vue';
 import Empty from '@/layouts/empty.vue';
 import { getRoutesApi } from '@/service/api/index';
+import baseRoutes from '@/router/baseRoutes';
 
 const modules = import.meta.glob('../views/**/*.vue');
 let uid = 0;
@@ -10,16 +11,22 @@ let uid = 0;
 export default defineStore('permission', {
   state: () => {
     return {
+      routes: <RouteRecordRaw[]>[],
       routerIsReady: false,
     };
   },
   actions: {
+    setRoutes(routes: RouteRecordRaw[]) {
+      this.routes = routes;
+    },
     generateRoutes() {
       return new Promise((resolve) => {
         getRoutesApi().then((res) => {
           const ret = compilerRoutes(res.data, true);
           resolve(ret);
           this.routerIsReady = true;
+          this.setRoutes(baseRoutes.concat(ret));
+          console.log(1, this.routes);
         });
       });
     },
