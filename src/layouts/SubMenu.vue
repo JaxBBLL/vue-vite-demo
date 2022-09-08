@@ -1,13 +1,26 @@
 <template>
-  <div>
+  <div v-if="menu.useFirstChild == 1">
+    <header
+      @click="onToggle"
+      :class="['title', menu.children[0].path === $route.path ? 'active' : '']"
+    >
+      <div class="flex-1" :style="{ 'margin-left': getMarginLeft(depth) }">
+        {{ menu.children[0].title }}
+      </div>
+    </header>
+  </div>
+  <div v-else>
     <header
       @click="onToggle"
       :class="['title', menu.path === $route.path ? 'active' : '']"
     >
-      <div class="flex-1" :style="{ 'margin-left': depth * 2 + 'em' }">
+      <div class="flex-1" :style="{ 'margin-left': getMarginLeft(depth) }">
         {{ menu.title }}
       </div>
-      <span class="arrow" v-if="isFolder" :class="isOpen ? 'open' : ''"
+      <span
+        class="arrow"
+        v-if="menu.children && menu.children.length"
+        :class="isOpen ? 'open' : ''"
         >&gt;</span
       >
     </header>
@@ -20,7 +33,7 @@
     </transition>
   </div>
 </template>
-<script setup lang="ts">
+<script setup>
 import router from '@/router';
 import SubMenu from './SubMenu.vue';
 
@@ -41,13 +54,24 @@ const isFolder = computed(() => {
 });
 
 const onToggle = () => {
-  if (isFolder.value) {
-    isOpen.value = !isOpen.value;
-  } else {
+  if (props.menu.useFirstChild === 1) {
     router.push({
-      path: props.menu.path,
+      path: props.menu.children[0].path,
     });
+  } else {
+    if (isFolder.value) {
+      isOpen.value = !isOpen.value;
+    } else {
+      router.push({
+        path: props.menu.path,
+      });
+    }
   }
+};
+
+const getMarginLeft = (depth) => {
+  const space = depth > 3 ? 3 : depth;
+  return space * 20 + 'px';
 };
 </script>
 <style scoped>
@@ -76,8 +100,8 @@ const onToggle = () => {
   padding: 10px 0;
 }
 .active {
-  color: #fff;
-  background: rgb(4, 62, 150);
+  /* color: #fff; */
+  color: #38f;
 }
 .arrow {
   font-family: monospace;

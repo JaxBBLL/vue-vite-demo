@@ -13,15 +13,11 @@
     </div>
   </div>
 </template>
-<script lang="ts" setup>
+<script setup>
 import usePermissionStore from '@/store/permission';
 import SubMenu from './SubMenu.vue';
 
 const menu = usePermissionStore().routes;
 
 let depth = ref(0);
-
-onMounted(() => {
-  console.log(toRaw(menu));
-});
 </script>

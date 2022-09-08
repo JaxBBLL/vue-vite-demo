@@ -22,11 +22,10 @@ export default defineStore('permission', {
     generateRoutes() {
       return new Promise((resolve) => {
         getRoutesApi().then((res) => {
-          const ret = compilerRoutes(res.data, true);
+          const ret = compilerRoutes(res.data, 0);
           resolve(ret);
           this.routerIsReady = true;
-          this.setRoutes(baseRoutes.concat(ret));
-          console.log(1, this.routes);
+          this.setRoutes(baseRoutes.concat(ret as any));
         });
       });
     },
@@ -34,54 +33,50 @@ export default defineStore('permission', {
 });
 
 // 路由递归构建
-function compilerRoutes(treeList: any[], isDynamic = false): RouteRecordRaw[] {
+function compilerRoutes(treeList: any[], depth: number): RouteRecordRaw[] {
   var res = [];
   for (var i = 0; i < treeList.length; i++) {
-    var route = buildRoute(treeList[i], isDynamic);
+    treeList[i].depth = depth;
+    var route = buildRoute(treeList[i]);
     if (treeList[i].children) {
       // @ts-ignore
-      route.children = compilerRoutes(treeList[i].children, isDynamic);
+      route.children = compilerRoutes(treeList[i].children, depth + 1);
     }
     res.push(route);
   }
   return res;
 }
 
-function buildRoute(item: any, isDynamic = false) {
+function buildRoute(item: any) {
   let component;
   let name = item.name || '';
   // 处理parmas的路由，只支持参数路径后面。如：/user/detail/:id
-  let path = item.path.replace(/\/:\w+/gi, '');
+  let path = (item.path || '').replace(/\/:\w+/gi, '');
 
-  // 是否动态目录菜单
-  if (isDynamic) {
-    // item.type -> 0：目录；1：菜单；2：内部菜单；3: iframe页面
-    if (item.type === 0) {
-      // 是目录
-      if (item.pid) {
-        // 非顶级目录，使用无html结构组件
-        component = Empty;
-      } else {
-        // 顶级目录，使用Layout组件
-        component = Layout;
-      }
-    } else if (item.type == 1 || item.type == 2) {
-      // 页面，使用对应路径的组件
-      try {
-        component = loadView(path) || null;
-      } catch (e) {
-        // TODO
-      }
-    } else if (item.type == 3) {
+  // item.type -> 0：目录；1：菜单；2：内部菜单；3: iframe页面
+  if (item.type === 0) {
+    // 是目录
+    if (item.depth > 0) {
+      // 非顶级目录，使用无html结构组件
       component = Empty;
+    } else {
+      // 顶级目录，使用Layout组件
+      component = Layout;
     }
-    if (path) {
-      name = path.replace(/\/(.)/g, function (match: any, p1: string) {
-        return p1.toUpperCase();
-      });
+  } else if (item.type == 1 || item.type == 2) {
+    // 页面，使用对应路径的组件
+    try {
+      component = loadView(path) || null;
+    } catch (e) {
+      // TODO
     }
-  } else {
-    component = item.component;
+  } else if (item.type == 3) {
+    component = Empty;
+  }
+  if (path) {
+    name = path.replace(/\/(.)/g, function (match: any, p1: string) {
+      return p1.toUpperCase();
+    });
   }
 
   return {
@@ -89,12 +84,9 @@ function buildRoute(item: any, isDynamic = false) {
     path: item.path || '',
     name: name,
     title: item.title,
-    hidden: item.type === 2,
-    leaf: item.leaf || false, // 目录是否显示为页面，true时会把子目录第一个设为导航。如：home页面
     icon: item.icon || '', // 目录图标
     component,
     redirect: item.redirect,
-    type: item.type,
     meta: {
       url: item.url,
       type: item.type,
