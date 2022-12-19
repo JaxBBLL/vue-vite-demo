@@ -1,6 +1,9 @@
 <template>
   <div class="drag-container">
-    <slot></slot>
+    <div>
+      <slot></slot>
+    </div>
+
     <!-- <div class="handle">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -87,7 +90,8 @@ const deleteHandle = () => {
 <style lang="less" scoped>
 .drag-container {
   position: relative;
-  // padding: 10px;
+  width: 100%;
+
   outline: 1px dashed #f5f5f5;
 
   .handle {
@@ -107,6 +111,7 @@ const deleteHandle = () => {
     transform: translateX(100%);
     box-shadow: 1px 2px 4px rgb(0 0 0 / 20%);
     background-color: #fff;
+    z-index: 510;
     display: none;
     flex-direction: column;
     > span {

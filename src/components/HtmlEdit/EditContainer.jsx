@@ -14,8 +14,9 @@ export default defineComponent({
   },
   setup(props) {
     const imageEditHandle = (e, pIndex, index) => {
-      data.value[pIndex].children[index].value =
-        'https://tempim-1256796114.cos.ap-shanghai.myqcloud.com/100x100';
+      const url =
+        'https://img1.zhaosw.com/zsw/upload/images/202203/15/f36777f3-55f4-432b-862c-15681c993fba.jpg';
+      data.value[pIndex].children[index].value = url;
     };
 
     const textChange = (e, pIndex, index) => {
