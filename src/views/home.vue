@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { fetchDataApi } from '@/service/api/index';
+import { fetchDataApi } from '@/api/common';
 import { awaitWrap } from '@/utils';
 
 const list = ref<

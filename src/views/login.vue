@@ -1,10 +1,8 @@
 <template>
-  <HtmlEdit />
+  <div></div>
 </template>
 
 <script>
-import HtmlEdit from '@/components/HtmlEdit/index.vue';
-
 export default {
   setup() {
     return {};

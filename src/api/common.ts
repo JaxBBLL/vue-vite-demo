@@ -1,6 +1,4 @@
-import { httpJson } from '../request/index';
-import type { HttpResponse } from '../request/index';
-import { dynamicRoutes } from '../mock/index';
+import { dynamicRoutes } from '@/mock/index';
 
 export const getRoutesApi = (): Promise<HttpResponse<any[]>> => {
   return new Promise((resolve, reject) => {

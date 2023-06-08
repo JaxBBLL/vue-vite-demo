@@ -1,3 +1,5 @@
+import { cloneDeep } from 'lodash-es';
+
 export function uuid() {
   const uuidChars =
     '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
@@ -15,36 +17,17 @@ export function uuid() {
   return uuid.join('');
 }
 
-export function typeOf(obj: any) {
-  return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
-}
+export const awaitWrap = (promise: Promise<any>) => {
+  return promise.then((data) => [data, null]).catch((err) => [null, err]);
+};
 
-export function deepCopy(data: any): any {
-  const t = typeOf(data);
-  let o;
-  if (t === 'array') {
-    o = [];
-    for (let i = 0; i < data.length; i++) {
-      o.push(deepCopy(data[i]));
-    }
-  } else if (t === 'object') {
-    o = {} as { [key: string]: any };
-    for (const i in data) {
-      o[i] = deepCopy(data[i]);
-    }
-  } else {
-    return data;
-  }
-  return o;
-}
-
-export function objReduce(data: any) {
-  const o = deepCopy(data);
-  if (typeOf(o) === 'string') {
+export function removeNullParameter(data: any) {
+  var o = cloneDeep(data);
+  if (typeof o === 'string') {
     return o;
   }
-  for (const k in o) {
-    if (typeOf(o[k]) === 'string') {
+  for (var k in o) {
+    if (typeof o[k] === 'string') {
       o[k] = o[k].trim();
       if (o[k] === '') {
         delete o[k];
@@ -53,13 +36,3 @@ export function objReduce(data: any) {
   }
   return o;
 }
-
-export function adornUrl(url: string, customUrl: boolean | string = false) {
-  const baseUrl =
-    customUrl === false ? import.meta.env.VITE_API_BASE : customUrl;
-  return baseUrl + url;
-}
-
-export const awaitWrap = (promise: Promise<any>) => {
-  return promise.then((data) => [data, null]).catch((err) => [null, err]);
-};

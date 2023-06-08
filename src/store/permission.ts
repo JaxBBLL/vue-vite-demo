@@ -2,7 +2,7 @@ import type { RouteRecordRaw } from 'vue-router';
 import { defineStore } from 'pinia';
 import Layout from '@/layouts/index.vue';
 import Empty from '@/layouts/empty.vue';
-import { getRoutesApi } from '@/service/api/index';
+import { getRoutesApi } from '@/api/common';
 import baseRoutes from '@/router/baseRoutes';
 
 const modules = import.meta.glob('../views/**/*.vue');
