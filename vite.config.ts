@@ -76,10 +76,10 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       vue(),
       AutoImport({
         imports: ['vue', 'vue-router', 'pinia'],
-        resolvers: [ElementPlusResolver()],
+        // resolvers: [ElementPlusResolver()],
       }),
       Components({
-        resolvers: [ElementPlusResolver()],
+        // resolvers: [ElementPlusResolver()],
       }),
       vueJsx(),
       createSvgIconsPlugin({

@@ -1,11 +1,11 @@
 <template>
-  <router-view />
+  <NConfigProvider :locale="zhCN" :date-locale="dateZhCN">
+    <AppProvider>
+      <RouterView />
+    </AppProvider>
+  </NConfigProvider>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'App',
-});
+<script lang="ts" setup>
+import { zhCN, dateZhCN } from 'naive-ui';
 </script>

@@ -21,7 +21,7 @@ const getList = async () => {
 
 <template>
   <div class="msg">{{ msg }}</div>
-  <el-button class="mt-10" type="primary" @click="getList">getList </el-button>
+  <n-button type="primary" @click="getList"> getList </n-button>
   <ul class="mt-10">
     <li v-for="(item, index) in list" :key="index">
       {{ item.name }}- {{ item.age }}

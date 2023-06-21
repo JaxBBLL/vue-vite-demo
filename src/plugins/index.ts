@@ -1,10 +1,13 @@
 import type { App } from 'vue';
-import { setupAssets } from './assets';
+import '@/styles/base.css';
+import { setupNaive } from './naive';
+import { setupNaiveDiscreteApi } from './naiveDiscreteApi';
 import { setupGlobalComponents } from './globalComponents';
 import { setupDirectives } from './directives';
 
 export default function (app: App) {
-  setupAssets(app);
+  setupNaive(app);
+  setupNaiveDiscreteApi(app);
   setupGlobalComponents(app);
   setupDirectives(app);
 }
