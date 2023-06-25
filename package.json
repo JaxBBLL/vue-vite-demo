@@ -14,6 +14,7 @@
   "dependencies": {
     "@element-plus/icons-vue": "2.0.10",
     "@tinymce/tinymce-vue": "5.0.0",
+    "@vicons/ionicons5": "^0.12.0",
     "axios": "1.4.0",
     "dayjs": "1.11.8",
     "element-plus": "2.3.6",

@@ -13,6 +13,8 @@ const msg = ref('Hello World');
 
 const getList = async () => {
   const [userRes] = await awaitWrap(fetchDataApi());
+  window.$message.success('获取数据成功');
+
   if (userRes) {
     list.value = userRes.data;
   }

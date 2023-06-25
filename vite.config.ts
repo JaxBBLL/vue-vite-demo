@@ -19,7 +19,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     base: env.VITE_BASE,
     server: {
       open: true,
-      port: 9000,
+      port: 8300,
       proxy: {
         '/local_proxy': {
           target: 'http://192.168.16.109:8080',

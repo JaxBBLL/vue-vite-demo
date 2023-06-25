@@ -36,3 +36,29 @@ export function removeNullParameter(data: any) {
   }
   return o;
 }
+
+export function traversalTree(node, children, callback) {
+  var list = [];
+  if (node === null) {
+    return;
+  }
+  var queue = [];
+  if (Array.isArray(node)) {
+    [].push.apply(queue, node);
+  } else {
+    queue.push(node);
+  }
+  var target;
+  while (queue.length) {
+    target = queue.shift();
+    if (callback) {
+      list.push(callback(target));
+    } else {
+      list.push(target);
+    }
+    if (target[children] && target[children].length) {
+      [].push.apply(queue, target[children]);
+    }
+  }
+  return list;
+}

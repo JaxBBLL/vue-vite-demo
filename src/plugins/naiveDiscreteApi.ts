@@ -12,7 +12,6 @@ export function setupNaiveDiscreteApi() {
   // const designStore = useDesignSetting();
 
   const configProviderPropsRef = computed(() => ({
-    theme: NaiveUI.darkTheme,
     themeOverrides: {},
   }));
   const { message, dialog, notification, loadingBar } =

@@ -1,9 +1,13 @@
 <template>
   <div class="app-container">
     <div class="app-sidebar">
-      <template v-for="item in menu" :key="item.id">
-        <sub-menu v-if="!item.hidden" :depth="depth + 1" :menu="item" />
-      </template>
+      <n-menu
+        :value="active"
+        key-field="id"
+        label-field="title"
+        @update:value="handleUpdateValue"
+        :options="menuOptions"
+      />
     </div>
     <div class="app-main">
       <header class="app-header"></header>
@@ -13,11 +17,34 @@
     </div>
   </div>
 </template>
-<script setup>
+<script lang="tsx" setup>
+import router from '@/router';
 import usePermissionStore from '@/store/permission';
-import SubMenu from './SubMenu.vue';
+import { traversalTree } from '@/utils/index';
 
-const menu = usePermissionStore().routes;
+const route = useRoute();
+const menuOptions = usePermissionStore().routes;
+const active = ref('');
 
-let depth = ref(0);
+traversalTree(menuOptions, 'children', (node) => {
+  if (node.useFirstChild) {
+    const nNode = node.children[0];
+    node.id = nNode.id;
+    node.title = nNode.title;
+    node.path = nNode.path;
+    node.component = nNode.component;
+    node.redirect = nNode.redirect;
+    node.children = null;
+  }
+  node.icon = null;
+});
+
+// 路由跳转需通过代码实现
+const handleUpdateValue = (key, item) => {
+  active.value = key;
+  router.push({ path: item.path });
+};
+
+console.log(menuOptions);
 </script>
+<style lang="less" scoped></style>

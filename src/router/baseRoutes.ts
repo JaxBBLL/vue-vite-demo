@@ -25,7 +25,7 @@ const baseRoutes = [
     name: 'Login',
     title: '登录',
     type: 1,
-    hidden: 1,
+    show: false,
   },
 ];
 

@@ -1,11 +1,11 @@
 <template>
   <NConfigProvider :locale="zhCN" :date-locale="dateZhCN">
-    <AppProvider>
+    <n-message-provider>
       <RouterView />
-    </AppProvider>
+    </n-message-provider>
   </NConfigProvider>
 </template>
 
 <script lang="ts" setup>
-import { zhCN, dateZhCN } from 'naive-ui';
+import { zhCN, dateZhCN, NConfigProvider } from 'naive-ui';
 </script>
