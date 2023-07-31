@@ -1,6 +1,6 @@
 import { dynamicRoutes } from '@/mock/index';
 
-export const getRoutesApi = (): Promise<HttpResponse<any[]>> => {
+export const getRoutesApi = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(dynamicRoutes);
@@ -8,14 +8,7 @@ export const getRoutesApi = (): Promise<HttpResponse<any[]>> => {
   });
 };
 
-export const fetchDataApi = (): Promise<
-  HttpResponse<
-    {
-      name: string;
-      age: number;
-    }[]
-  >
-> => {
+export const fetchDataApi = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve({

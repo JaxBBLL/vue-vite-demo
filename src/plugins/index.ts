@@ -1,5 +1,6 @@
 import type { App } from 'vue';
-import '@/styles/base.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import '@/styles/base.less';
 import { setupNaive } from './naive';
 import { setupNaiveDiscreteApi } from './naiveDiscreteApi';
 import { setupGlobalComponents } from './globalComponents';
