@@ -24,8 +24,6 @@ export default defineStore('permission', {
         getRoutesApi().then((res) => {
           const sRoutes = compilerRoutes(baseRoutes, false, 0);
           const dRoutes = compilerRoutes(res.data, true, 0);
-          console.log(sRoutes, dRoutes);
-
           resolve(dRoutes);
           this.routerIsReady = true;
           this.setRoutes(sRoutes.concat(dRoutes as any));

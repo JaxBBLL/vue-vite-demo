@@ -30,8 +30,6 @@ const routes = usePermissionStore().routes;
 const menuOptions = cloneDeep(routes);
 const active = ref(route.meta.id || '');
 
-console.log('routes', routes);
-
 traversalTree(menuOptions, 'children', (node) => {
   let icon = node.icon;
   if (node.useFirstChild) {
@@ -53,7 +51,5 @@ const handleUpdateValue = (key, item) => {
   active.value = key;
   router.push({ path: item.path });
 };
-
-console.log('menuOptions', route.meta, menuOptions);
 </script>
 <style lang="less" scoped></style>
