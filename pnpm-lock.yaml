@@ -49,6 +49,9 @@ devDependencies:
   '@rushstack/eslint-patch':
     specifier: 1.2.0
     version: registry.npmmirror.com/@rushstack/eslint-patch@1.2.0
+  '@types/lodash-es':
+    specifier: ^4.17.8
+    version: registry.npmmirror.com/@types/lodash-es@4.17.8
   '@types/node':
     specifier: 18.11.17
     version: registry.npmmirror.com/@types/node@18.11.17
@@ -1006,19 +1009,17 @@ packages:
     version: 0.14.0
     dev: false
 
-  registry.npmmirror.com/@types/lodash-es@4.17.7:
-    resolution: {integrity: sha512-z0ptr6UI10VlU6l5MYhGwS4mC8DZyYer2mCoyysZtSF7p26zOX8UpbrV0YpNYLGS8K4PUFIyEr62IMFFjveSiQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/lodash-es/-/lodash-es-4.17.7.tgz}
+  registry.npmmirror.com/@types/lodash-es@4.17.8:
+    resolution: {integrity: sha512-euY3XQcZmIzSy7YH5+Unb3b2X12Wtk54YWINBvvGQ5SmMvwb11JQskGsfkH/5HXK77Kr8GF0wkVDIxzAisWtog==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/lodash-es/-/lodash-es-4.17.8.tgz}
     name: '@types/lodash-es'
-    version: 4.17.7
+    version: 4.17.8
     dependencies:
       '@types/lodash': registry.npmmirror.com/@types/lodash@4.14.195
-    dev: false
 
   registry.npmmirror.com/@types/lodash@4.14.195:
     resolution: {integrity: sha512-Hwx9EUgdwf2GLarOjQp5ZH8ZmblzcbTBC2wtQWNKARBSxM9ezRIAUpeDTgoQRAFB0+8CNWXVA9+MaSOzOF3nPg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/lodash/-/lodash-4.14.195.tgz}
     name: '@types/lodash'
     version: 4.14.195
-    dev: false
 
   registry.npmmirror.com/@types/node@18.11.17:
     resolution: {integrity: sha512-HJSUJmni4BeDHhfzn6nF0sVmd1SMezP7/4F0Lq+aXzmp2xm9O7WXrUtHW/CHlYVtZUbByEvWidHqRtcJXGF2Ng==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/node/-/node-18.11.17.tgz}
@@ -3735,7 +3736,7 @@ packages:
       '@css-render/vue3-ssr': registry.npmmirror.com/@css-render/vue3-ssr@0.15.12(vue@3.3.4)
       '@types/katex': registry.npmmirror.com/@types/katex@0.14.0
       '@types/lodash': registry.npmmirror.com/@types/lodash@4.14.195
-      '@types/lodash-es': registry.npmmirror.com/@types/lodash-es@4.17.7
+      '@types/lodash-es': registry.npmmirror.com/@types/lodash-es@4.17.8
       async-validator: registry.npmmirror.com/async-validator@4.2.5
       css-render: registry.npmmirror.com/css-render@0.15.12
       date-fns: registry.npmmirror.com/date-fns@2.30.0

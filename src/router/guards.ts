@@ -17,7 +17,5 @@ export default function (router: Router) {
       next();
     }
   });
-  router.isReady().then(() => {
-    console.log('isReady', router.getRoutes());
-  });
+  router.isReady().then(() => {});
 }

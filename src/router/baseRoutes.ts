@@ -15,6 +15,7 @@ const baseRoutes = [
         path: '/home',
         name: 'home',
         title: '首页',
+        icon: 'bi bi-house-door-fill',
         component: () => import('@/views/home.vue'),
       },
     ],

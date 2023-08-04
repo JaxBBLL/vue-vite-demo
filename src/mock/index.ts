@@ -11,11 +11,12 @@ export const dynamicRoutes = {
      */
     {
       title: '用户',
-      icon: 'fa fa-table',
+      icon: 'bi bi-person-circle',
       pid: 0,
       type: 0,
       children: [
         {
+          icon: 'bi bi-people-fill',
           title: '用户管理',
           type: 0,
           children: [
@@ -30,8 +31,8 @@ export const dynamicRoutes = {
       ],
     },
     {
-      title: '组件',
-      icon: 'fa fa-table',
+      title: '示例',
+      icon: 'bi bi-table',
       pid: 0,
       type: 0,
       id: 1,
@@ -40,6 +41,12 @@ export const dynamicRoutes = {
           path: '/menu/editor',
           title: '富文本',
           name: 'MenuEditor',
+          type: 1,
+        },
+        {
+          path: '/menu/worker',
+          title: 'web worker',
+          name: 'MenuWorker',
           type: 1,
         },
       ],
