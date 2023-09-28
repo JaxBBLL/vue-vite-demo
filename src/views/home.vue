@@ -20,7 +20,7 @@ const getList = async () => {
 const handleAdd = () => {
   add({
     name: Math.random().toString(16).slice(2, 8),
-    age: 19,
+    age: 19
   });
 };
 
@@ -29,7 +29,7 @@ getList();
 
 <template>
   <div>
-    <span class="text-primary">jaxbbll</span>
+    <span class="msg">jaxbbll</span>
   </div>
   <n-space>
     <n-button type="primary" @click="handleAdd"> add </n-button>
@@ -40,13 +40,7 @@ getList();
       <div class="flex">
         <div class="w-100">{{ item.name }}</div>
         <div class="w-100">{{ item.age }}</div>
-        <n-button
-          @click="remove(index)"
-          tertiary
-          circle
-          size="tiny"
-          type="error"
-        >
+        <n-button @click="remove(index)" tertiary circle size="tiny" type="error">
           <template #icon>
             <i class="bi bi-trash3 text-12"></i>
           </template>
@@ -55,8 +49,9 @@ getList();
     </li>
   </ul>
 </template>
-<style scoped>
+
+<style scoped lang="less">
 .msg {
-  @apply text-danger text-20 font-bold uppercase;
+  @apply text-primary text-20 font-bold uppercase;
 }
 </style>

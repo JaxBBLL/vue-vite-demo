@@ -1,5 +1,5 @@
 {
-  "include": ["env.d.ts", "types/**/*.ts", "auto-imports.d.ts"],
+  "include": ["env.d.ts", "auto-imports.d.ts"],
   "files": [],
   "compilerOptions": {
     "baseUrl": ".",

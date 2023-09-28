@@ -5,9 +5,10 @@ axios.defaults.withCredentials = true;
 
 const service = axios.create({
   baseURL: import.meta.env.VITE_API_BASE,
-  timeout: 5000,
+  timeout: 5000
 });
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 let hasLogout = false;
 
 service.interceptors.request.use(
@@ -17,7 +18,7 @@ service.interceptors.request.use(
   (error) => {
     console.log(error);
     return Promise.reject(error);
-  },
+  }
 );
 
 service.interceptors.response.use(
@@ -40,7 +41,7 @@ service.interceptors.response.use(
       console.log(
         '%c' + response.config.url,
         'color:#38f;font-size:14px;font-weight:bold',
-        res.data,
+        res.data
       );
       return res;
     }
@@ -49,16 +50,13 @@ service.interceptors.response.use(
     const data = error?.response?.data || {};
     console.error(data.message || '服务端错误');
     return Promise.reject(error);
-  },
+  }
 );
 
 export default function (config) {
   let { params, data } = config;
   const { sendEmptyValue = false } = config;
-  if (
-    config.headers &&
-    config.headers['Content-Type'] === 'multipart/form-data'
-  ) {
+  if (config.headers && config.headers['Content-Type'] === 'multipart/form-data') {
     return service(config);
   }
   // 默认移除空值参数
@@ -69,6 +67,6 @@ export default function (config) {
   return service({
     ...config,
     params,
-    data,
+    data
   });
 }

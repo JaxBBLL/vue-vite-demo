@@ -2,12 +2,12 @@
   <div></div>
 </template>
 
-<script>
+<script lang="tsx">
 export default {
   setup() {
-    return {};
-  },
-};
+    return {}
+  }
+}
 </script>
 
 <style scoped></style>
