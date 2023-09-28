@@ -44,7 +44,7 @@ const columns = [
 ];
 
 const queryTable = (): Promise<ResponsePagination> => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const ret = Array.from({ length: query.pageSize }).map((_, index) => ({
       key: query.pageSize * (query.pageNumber - 1) + index,
       name: `Edward King ${index}`,

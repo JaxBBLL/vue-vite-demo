@@ -53,7 +53,8 @@ service.interceptors.response.use(
 );
 
 export default function (config) {
-  let { params, data, sendEmptyValue = false } = config;
+  let { params, data } = config;
+  const { sendEmptyValue = false } = config;
   if (
     config.headers &&
     config.headers['Content-Type'] === 'multipart/form-data'

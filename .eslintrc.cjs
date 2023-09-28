@@ -1,43 +1,19 @@
 /* eslint-env node */
-require('@rushstack/eslint-patch/modern-module-resolution');
+require('@rushstack/eslint-patch/modern-module-resolution')
 
 module.exports = {
   root: true,
-  extends: [
+  "ignorePatterns": ["public/**"],
+  'extends': [
     'plugin:vue/vue3-essential',
     'eslint:recommended',
-    '@vue/eslint-config-typescript/recommended',
-    '@vue/eslint-config-prettier',
+    '@vue/eslint-config-typescript',
+    '@vue/eslint-config-prettier/skip-formatting'
   ],
   parserOptions: {
-    ecmaVersion: 'latest',
+    ecmaVersion: 'latest'
   },
   rules: {
-    semi: [2],
-    quotes: [0],
-    'prefer-const': [0],
-    'no-undef': [0],
-    'no-var': [0],
-    'no-useless-escape': [0],
-    'vue/multi-word-component-names': [0],
-    'vue/no-mutating-props': [0],
-    '@typescript-eslint/no-unused-vars': [0],
-    '@typescript-eslint/no-this-alias': [0],
-    '@typescript-eslint/no-empty-function': [0],
-    '@typescript-eslint/no-explicit-any': [0],
-    '@typescript-eslint/no-non-null-assertion': [0],
-    '@typescript-eslint/ban-ts-comment': [0],
-  },
-  'settings': {
-    //解决路径引用ts文件报错的问题
-    'import/resolver': {
-      'node': {
-        'extensions': ['.js', '.jsx', '.ts', '.tsx']
-      },
-      // 解决tsconfig下的path别名导致eslint插件无法解决的bug
-      'typescript': {
-        'alwaysTryTypes': true
-      }
-    }
+    'vue/multi-word-component-names': [0]
   }
-};
+}

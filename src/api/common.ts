@@ -1,7 +1,7 @@
 import { dynamicRoutes } from '@/mock/index';
 
 export const getRoutesApi = () => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve(dynamicRoutes);
     }, 300);
@@ -9,7 +9,7 @@ export const getRoutesApi = () => {
 };
 
 export const fetchDataApi = () => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve({
         code: 200,

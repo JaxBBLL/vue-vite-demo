@@ -22,11 +22,11 @@ export const awaitWrap = (promise: Promise<any>) => {
 };
 
 export function removeNullParameter(data: any) {
-  var o = cloneDeep(data);
+  const o = cloneDeep(data);
   if (typeof o === 'string') {
     return o;
   }
-  for (var k in o) {
+  for (const k in o) {
     if (typeof o[k] === 'string') {
       o[k] = o[k].trim();
       if (o[k] === '') {
@@ -38,17 +38,17 @@ export function removeNullParameter(data: any) {
 }
 
 export function traversalTree(node, children, callback) {
-  var list = [];
+  const list = [];
   if (node === null) {
     return;
   }
-  var queue = [];
+  const queue = [];
   if (Array.isArray(node)) {
     [].push.apply(queue, node);
   } else {
     queue.push(node);
   }
-  var target;
+  let target;
   while (queue.length) {
     target = queue.shift();
     if (callback) {

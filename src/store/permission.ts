@@ -39,10 +39,10 @@ function compilerRoutes(
   isDynamic: boolean,
   depth: number,
 ): RouteRecordRaw[] {
-  var res = [];
-  for (var i = 0; i < treeList.length; i++) {
+  const res = [];
+  for (let i = 0; i < treeList.length; i++) {
     treeList[i].depth = depth;
-    var route = buildRoute(treeList[i], isDynamic);
+    const route = buildRoute(treeList[i], isDynamic);
     if (treeList[i].children) {
       // @ts-ignore
       route.children = compilerRoutes(
@@ -60,7 +60,7 @@ function buildRoute(item: any, isDynamic = false) {
   let component;
   let name = item.name || '';
   // 处理parmas的路由，只支持参数路径后面。如：/user/detail/:id
-  let path = (item.path || '').replace(/\/:\w+/gi, '');
+  const path = (item.path || '').replace(/\/:\w+/gi, '');
 
   // item.type -> 0：目录；1：菜单；2：内部菜单；3: iframe页面
   if (isDynamic) {

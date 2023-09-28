@@ -1,10 +1,10 @@
 {
   "include": ["env.d.ts", "types/**/*.ts", "auto-imports.d.ts"],
+  "files": [],
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "esnext",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["*", "src/*"]
     },
     "outDir": "dist"
   },

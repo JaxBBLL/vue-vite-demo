@@ -84,7 +84,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         symbolId: 'icon-[dir]-[name]',
       }),
       eslint({
-        exclude: ['node_modules/**'],
+        exclude: ['**/node_modules/**', 'public/**'],
         cache: false,
       }),
       // legacy({
