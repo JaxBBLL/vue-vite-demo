@@ -19,7 +19,7 @@ export function setupNaiveDiscreteApi() {
       ['message', 'dialog', 'notification', 'loadingBar'],
       {
         configProviderProps: configProviderPropsRef,
-      }
+      },
     );
 
   window['$message'] = message;

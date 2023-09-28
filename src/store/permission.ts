@@ -37,7 +37,7 @@ export default defineStore('permission', {
 function compilerRoutes(
   treeList: any[],
   isDynamic: boolean,
-  depth: number
+  depth: number,
 ): RouteRecordRaw[] {
   var res = [];
   for (var i = 0; i < treeList.length; i++) {
@@ -48,7 +48,7 @@ function compilerRoutes(
       route.children = compilerRoutes(
         treeList[i].children,
         isDynamic,
-        depth + 1
+        depth + 1,
       );
     }
     res.push(route);

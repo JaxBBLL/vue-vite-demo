@@ -1,8 +1,11 @@
 module.exports = {
   plugins: {
+    'postcss-pxtorem': {
+      rootValue: 16,
+      propList: ['*'],
+    },
     'postcss-import': {},
-    'tailwindcss/nesting': {},
-    tailwindcss: {},
+    'postcss-custom-properties': {},
     autoprefixer: {},
   },
 };

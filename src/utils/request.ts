@@ -17,7 +17,7 @@ service.interceptors.request.use(
   (error) => {
     console.log(error);
     return Promise.reject(error);
-  }
+  },
 );
 
 service.interceptors.response.use(
@@ -40,7 +40,7 @@ service.interceptors.response.use(
       console.log(
         '%c' + response.config.url,
         'color:#38f;font-size:14px;font-weight:bold',
-        res.data
+        res.data,
       );
       return res;
     }
@@ -49,7 +49,7 @@ service.interceptors.response.use(
     const data = error?.response?.data || {};
     console.error(data.message || '服务端错误');
     return Promise.reject(error);
-  }
+  },
 );
 
 export default function (config) {

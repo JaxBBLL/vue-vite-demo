@@ -5,10 +5,9 @@ import AutoImport from 'unplugin-auto-import/vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import legacy from '@vitejs/plugin-legacy';
-import Components from 'unplugin-vue-components/vite';
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import eslint from 'vite-plugin-eslint';
+import Unocss from 'unocss/vite';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
@@ -30,7 +29,6 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     },
     build: {
       minify: 'terser',
-      target: ['es2015'],
       terserOptions: {
         compress: {
           drop_console: !isDev,
@@ -73,41 +71,37 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       },
     },
     plugins: [
+      Unocss(),
       vue(),
       AutoImport({
         imports: ['vue', 'vue-router', 'pinia'],
-        // resolvers: [ElementPlusResolver()],
-      }),
-      Components({
-        // resolvers: [ElementPlusResolver()],
       }),
       vueJsx(),
       createSvgIconsPlugin({
         // 指定需要缓存的图标文件夹
-        iconDirs: [path.resolve(process.cwd(), 'src/assets/svg')],
+        iconDirs: [path.resolve(process.cwd(), 'src/svg')],
         // 指定symbolId格式
         symbolId: 'icon-[dir]-[name]',
       }),
-    ].concat(
-      isDev
-        ? [
-            eslint({
-              exclude: ['node_modules/**'],
-              cache: false,
-            }),
-          ]
-        : [
-            legacy({
-              targets: ['defaults', 'not IE 11'],
-            }),
-          ]
-    ),
+      eslint({
+        exclude: ['node_modules/**'],
+        cache: false,
+      }),
+      // legacy({
+      //   targets: ['IE 11'],
+      // }),
+    ],
     resolve: {
       alias: {
-        // import { fileURLToPath, URL } from 'url'
-        // fileURLToPath(new URL('./src', import.meta.url)),
-        '~': path.resolve(process.cwd(), './'),
-        '@': path.resolve(process.cwd(), './src'),
+        '@': path.resolve(__dirname, 'src'),
+      },
+    },
+    css: {
+      preprocessorOptions: {
+        less: {
+          additionalData: '@import "@/styles/var.less";',
+          javascriptEnabled: true,
+        },
       },
     },
   };

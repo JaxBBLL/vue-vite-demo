@@ -28,6 +28,9 @@ getList();
 </script>
 
 <template>
+  <div>
+    <span class="text-primary">jaxbbll</span>
+  </div>
   <n-space>
     <n-button type="primary" @click="handleAdd"> add </n-button>
     <n-button type="error" @click="clear"> clear </n-button>
