@@ -4,14 +4,14 @@ import presetRemToPx from '@unocss/preset-rem-to-px';
 
 export default defineConfig({
   presets: [
-    presetRemToPx({
-      baseFontSize: 4, // 1单位 = 0.25rem = 1px
-    }),
     presetUno(),
     presetAttributify(),
     presetWind({
-      preflight: false,
+      preflight: false
     }),
+    presetRemToPx({
+      baseFontSize: 4 // 1单位 = 0.25rem = 1px
+    })
   ],
   shortcuts: [['wh-full', 'w-full h-full']],
   rules: [],
@@ -21,8 +21,8 @@ export default defineConfig({
       red: 'var(--red-color)',
       yellow: 'var(--yellow-color)',
       green: 'var(--green-color)',
-      blue: 'var(--blue-color)',
-    },
+      blue: 'var(--blue-color)'
+    }
   },
-  transformers: [transformerDirectives()],
+  transformers: [transformerDirectives()]
 });
