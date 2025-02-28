@@ -4,7 +4,6 @@ import type { UserConfig, ConfigEnv } from 'vite';
 import AutoImport from 'unplugin-auto-import/vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-import legacy from '@vitejs/plugin-legacy';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import eslint from 'vite-plugin-eslint';
 import Unocss from 'unocss/vite';
@@ -76,9 +75,6 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         exclude: ['**/node_modules/**', 'public/**'],
         cache: false
       })
-      // legacy({
-      //   targets: ['IE 11'],
-      // }),
     ],
     resolve: {
       alias: {
